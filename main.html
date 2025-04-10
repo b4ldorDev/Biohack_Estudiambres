@@ -3,416 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BIO HACK RETO 2025 - Órtesis Robótica</title>
-    <style>
-        :root {
-            --primary-color: #3498db;
-            --secondary-color: #2ecc71;
-            --dark-color: #2c3e50;
-            --light-color: #ecf0f1;
-            --accent-color: #e74c3c;
-            --highlight-color: #f39c12;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
-        body {
-            background-color: var(--light-color);
-            color: var(--dark-color);
-            line-height: 1.6;
-        }
-        
-        header {
-            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
-            color: white;
-            padding: 2rem 0;
-            text-align: center;
-        }
-        
-        .header-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-        
-        nav {
-            background-color: var(--dark-color);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-        
-        nav ul {
-            display: flex;
-            justify-content: center;
-            list-style: none;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        nav ul li {
-            padding: 1rem 2rem;
-        }
-        
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-        
-        nav ul li a:hover {
-            color: var(--secondary-color);
-        }
-        
-        section {
-            padding: 4rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .hero {
-            display: flex;
-            align-items: center;
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-        
-        .hero-text {
-            flex: 1;
-        }
-        
-        .hero-image {
-            flex: 1;
-            text-align: center;
-        }
-        
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            color: white;
-        }
-        
-        h2 {
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-            color: var(--primary-color);
-            border-bottom: 2px solid var(--secondary-color);
-            padding-bottom: 0.5rem;
-        }
-        
-        h3 {
-            font-size: 1.5rem;
-            margin: 1.5rem 0 1rem;
-            color: var(--dark-color);
-        }
-        
-        p {
-            margin-bottom: 1rem;
-        }
-        
-        .tech-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-        
-        .tech-card {
-            flex: 1;
-            min-width: 300px;
-            background-color: white;
-            border-radius: 8px;
-            padding: 1.5rem;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .tech-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-        }
-        
-        .tech-icon {
-            background-color: var(--light-color);
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1rem;
-            font-size: 2rem;
-            color: var(--primary-color);
-        }
-        
-        .btn {
-            display: inline-block;
-            background-color: var(--primary-color);
-            color: white;
-            padding: 0.75rem 1.5rem;
-            border-radius: 4px;
-            text-decoration: none;
-            font-weight: 500;
-            transition: background-color 0.3s ease;
-            margin-top: 1rem;
-        }
-        
-        .btn:hover {
-            background-color: var(--secondary-color);
-        }
-        
-        footer {
-            background-color: var(--dark-color);
-            color: white;
-            text-align: center;
-            padding: 2rem;
-            margin-top: 2rem;
-        }
-        
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin: 2rem 0;
-        }
-        
-        .feature-item {
-            background-color: white;
-            padding: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            transition: transform 0.3s ease;
-        }
-        
-        .feature-item:hover {
-            transform: translateY(-5px);
-        }
-        
-        .highlight {
-            color: var(--accent-color);
-            font-weight: bold;
-        }
-        
-        .team-member {
-            background-color: white;
-            border-radius: 8px;
-            padding: 1.5rem;
-            margin-bottom: 1rem;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-        
-        .team-member h3 {
-            margin-top: 0;
-        }
-        
-        .tab-container {
-            margin: 2rem 0;
-        }
-        
-        .tab-buttons {
-            display: flex;
-            border-bottom: 2px solid var(--primary-color);
-            margin-bottom: 1.5rem;
-        }
-        
-        .tab-btn {
-            padding: 0.75rem 1.5rem;
-            cursor: pointer;
-            background-color: var(--light-color);
-            border: none;
-            outline: none;
-            font-weight: 500;
-            transition: background-color 0.3s ease;
-        }
-        
-        .tab-btn.active {
-            background-color: var(--primary-color);
-            color: white;
-        }
-        
-        .tab-content {
-            display: none;
-            animation: fadeIn 0.5s ease;
-        }
-        
-        .tab-content.active {
-            display: block;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        
-        .progress-container {
-            background-color: #ddd;
-            border-radius: 20px;
-            margin: 15px 0;
-            height: 20px;
-            width: 100%;
-        }
-        
-        .progress-bar {
-            height: 100%;
-            border-radius: 20px;
-            width: 0;
-            background-color: var(--secondary-color);
-            transition: width 1.5s ease-in-out;
-        }
-        
-        .animated-icon {
-            animation: pulse 2s infinite;
-        }
-        
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-            100% { transform: scale(1); }
-        }
-        
-        .diagram {
-            width: 100%;
-            margin: 2rem 0;
-            text-align: center;
-            position: relative;
-        }
-        
-        .timeline {
-            display: flex;
-            flex-wrap: wrap;
-            margin: 2rem 0;
-        }
-        
-        .timeline-item {
-            flex-basis: 100%;
-            display: flex;
-            margin-bottom: 2rem;
-        }
-        
-        .timeline-point {
-            width: 25px;
-            height: 25px;
-            background-color: var(--primary-color);
-            border-radius: 50%;
-            margin-right: 1.5rem;
-            position: relative;
-        }
-        
-        .timeline-point::after {
-            content: '';
-            position: absolute;
-            width: 3px;
-            background-color: var(--primary-color);
-            top: 25px;
-            bottom: -40px;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-        
-        .timeline-item:last-child .timeline-point::after {
-            display: none;
-        }
-        
-        .timeline-content {
-            background-color: white;
-            padding: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            flex: 1;
-        }
-        
-        .citation {
-            font-style: italic;
-            color: #666;
-            font-size: 0.9rem;
-        }
-        
-        .table-container {
-            overflow-x: auto;
-            margin: 2rem 0;
-        }
-        
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        
-        table th, table td {
-            padding: 0.75rem;
-            border: 1px solid #ddd;
-            text-align: left;
-        }
-        
-        table th {
-            background-color: var(--primary-color);
-            color: white;
-        }
-        
-        table tr:nth-child(even) {
-            background-color: #f2f2f2;
-        }
-        
-        .back-to-top {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            background-color: var(--primary-color);
-            color: white;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            z-index: 1000;
-        }
-        
-        .back-to-top.visible {
-            opacity: 1;
-        }
-        
-        @media (max-width: 768px) {
-            .hero {
-                flex-direction: column;
-            }
-            
-            nav ul {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            nav ul li {
-                padding: 0.5rem;
-            }
-            
-            .timeline-item {
-                flex-direction: column;
-            }
-            
-            .timeline-point {
-                margin-bottom: 1rem;
-            }
-            
-            .timeline-point::after {
-                display: none;
-            }
-        }
-    </style>
+    <title>OrtoTech - Equipo Estudiambres</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
 </head>
 <body>
     <header>
@@ -422,48 +15,222 @@
         </div>
     </header>
     
-    <nav>
+    <nav id="main-nav">
         <ul>
             <li><a href="#inicio">Inicio</a></li>
-            <li><a href="#problema">Problemática</a></li>
-            <li><a href="#que-es">¿Qué es?</a></li>
+            <li><a href="#proyecto">El Proyecto</a></li>
             <li><a href="#tecnologia">Tecnología</a></li>
-            <li><a href="#marco-regulatorio">Marco Regulatorio</a></li>
             <li><a href="#equipo">Equipo</a></li>
-            <li><a href="#referencias">Referencias</a></li>
+            <li><a href="#regulacion">Regulación</a></li>
         </ul>
     </nav>
     
     <section id="inicio">
         <div class="hero">
             <div class="hero-text">
-                <h2>Proyecto de Órtesis Robótica</h2>
-                <p>Bienvenidos a la presentación de nuestro proyecto para el BIO HACK RETO 2025. Hemos desarrollado una órtesis robótica innovadora que combina elementos mecánicos, electrónicos y software para proporcionar apoyo en la flexión de codo en personas con limitaciones motoras.</p>
-                <p>Utilizando señales de electromiografía de superficie (EMG), nuestra solución está especialmente diseñada para personas con artrogriposis múltiple congénita (AMC) y otros trastornos que afectan la movilidad del codo.</p>
-                <a href="#tecnologia" class="btn">Conoce la tecnología</a>
+                <h2>Órtesis Robótica con EMG</h2>
+                <p>Solución innovadora para personas con artrogriposis múltiple congénita (AMC) y otras limitaciones motoras que afectan la flexión del codo.</p>
+                <p>Proyecto desarrollado por estudiantes del Tecnológico de Monterrey para el BioHack Reto 2025 en la categoría de Biomédica.</p>
+                <a href="#proyecto" class="btn">Conoce más</a>
             </div>
             <div class="hero-image">
-                <img src="/api/placeholder/400/320" alt="Órtesis Robótica para Codo" id="hero-img" />
+                <img src="/api/placeholder/400/320" alt="Órtesis Robótica" />
             </div>
         </div>
         
         <div class="features-grid">
             <div class="feature-item">
                 <h3>Asistencia Activa</h3>
-                <p>Ayuda en tiempo real según las señales musculares del usuario</p>
-            </div>
-            <div class="feature-item">
-                <h3>Monitorización EMG</h3>
-                <p>Seguimiento preciso de la actividad muscular para un control natural</p>
+                <p>Detecta las intenciones de movimiento mediante señales EMG y asiste al usuario en la flexión del codo</p>
             </div>
             <div class="feature-item">
                 <h3>Personalizable</h3>
-                <p>Adaptable a diferentes necesidades y condiciones del paciente</p>
+                <p>Ajustable a las necesidades específicas de cada paciente con parámetros configurables</p>
+            </div>
+            <div class="feature-item">
+                <h3>Tecnología Avanzada</h3>
+                <p>Integra electromiografía, actuadores eléctricos y algoritmos de procesamiento de señales</p>
             </div>
         </div>
     </section>
     
-    <section id="problema">
-        <h2>Problemática de Salud</h2>
+    <section id="proyecto">
+        <h2>Sobre el Proyecto</h2>
         
-        <div class="tab-container">
+        <div class="content-columns">
+            <div class="column">
+                <h3>Problemática</h3>
+                <p>La artrogriposis múltiple congénita (AMC) es un grupo de trastornos caracterizados por contracturas de las extremidades que afectan principalmente las manos y los pies. Esta condición se asocia con una disminución del movimiento fetal en el útero, lo que ocasiona contracturas articulares que limitan el movimiento.</p>
+                
+                <p>La AMC generalmente implica debilidad muscular y fibrosis, lo que restringe la movilidad y afecta significativamente la calidad de vida de quienes la padecen. Su principal causa es la acinesia fetal, que lleva al desarrollo de tejido conectivo alrededor de las articulaciones, hecho que restringe el movimiento y aumenta las contracturas articulares.</p>
+            </div>
+            
+            <div class="column">
+                <h3>Nuestra Solución</h3>
+                <p>Desarrollamos una órtesis robótica diseñada para personas con AMC y otras limitaciones en el movimiento del codo o el antebrazo. El dispositivo utiliza sensores de electromiografía (EMG) para detectar las contracciones musculares del usuario y activar un sistema de asistencia motorizada cuando sea necesario.</p>
+                
+                <p>La órtesis no solo mejora la movilidad, sino que también puede ser utilizada como herramienta de rehabilitación, permitiendo a los usuarios realizar ejercicios terapéuticos con asistencia controlada.</p>
+            </div>
+        </div>
+        
+        <div class="project-diagram">
+            <h3>Diagrama Conceptual</h3>
+            <img src="/api/placeholder/800/400" alt="Diagrama de bloques ortesis" />
+            <p class="caption">Figura 1.0 Diagrama de bloques ortesis</p>
+        </div>
+    </section>
+    
+    <section id="tecnologia">
+        <h2>Tecnología</h2>
+        <p>Nuestra órtesis robótica integra tecnologías avanzadas en tres áreas principales:</p>
+        
+        <div class="tech-tabs">
+            <div class="tab-buttons">
+                <button class="tab-button active" onclick="openTab('mecanica')">Mecánica</button>
+                <button class="tab-button" onclick="openTab('electronica')">Electrónica</button>
+                <button class="tab-button" onclick="openTab('programacion')">Programación</button>
+            </div>
+            
+            <div id="mecanica" class="tab-content active">
+                <div class="tech-card">
+                    <h3>Componentes Mecánicos</h3>
+                    <ul>
+                        <li>Estructura de impresión 3D en PLA reforzado con fibra de carbono</li>
+                        <li>Articulaciones de precisión con rodamientos de baja fricción</li>
+                        <li>Sistema de ajuste ergonómico adaptable a diferentes anatomías</li>
+                        <li>Materiales hipoalergénicos y transpirables en contacto con la piel</li>
+                        <li>Diseño modular que permite intercambiar componentes según necesidades</li>
+                    </ul>
+                    <div class="tech-image">
+                        <img src="/api/placeholder/400/300" alt="Componentes mecánicos" />
+                    </div>
+                </div>
+            </div>
+            
+            <div id="electronica" class="tab-content">
+                <div class="tech-card">
+                    <h3>Sistema Electrónico</h3>
+                    <ul>
+                        <li>Sensores EMG para detectar señales mioeléctricas</li>
+                        <li>Amplificador AD620 para el procesamiento de señales biomédicas</li>
+                        <li>Microcontrolador ESP32 para el procesamiento de datos</li>
+                        <li>Actuadores eléctricos (servomotores o motores DC)</li>
+                        <li>Sensores de posición y movimiento (acelerómetros y giroscopios)</li>
+                        <li>Sistema de baterías recargables para uso portátil</li>
+                    </ul>
+                    <div class="tech-image">
+                        <img src="/api/placeholder/400/300" alt="Componentes electrónicos" />
+                    </div>
+                </div>
+            </div>
+            
+            <div id="programacion" class="tab-content">
+                <div class="tech-card">
+                    <h3>Software y Algoritmos</h3>
+                    <ul>
+                        <li>Filtros digitales para eliminación de ruido en señales EMG</li>
+                        <li>Algoritmos de Machine Learning para reconocimiento de patrones musculares:
+                            <ul>
+                                <li>Árboles de decisión para clasificación de movimientos</li>
+                                <li>SVM (Máquinas de Vector Soporte) para identificar activaciones musculares</li>
+                                <li>Redes neuronales para modelar relaciones no lineales</li>
+                                <li>Random Forest para reducir artefactos por movimiento</li>
+                            </ul>
+                        </li>
+                        <li>Interfaz de usuario para configuración de parámetros</li>
+                        <li>Sistema de monitoreo y registro de actividad</li>
+                    </ul>
+                    <div class="tech-image">
+                        <img src="/api/placeholder/400/300" alt="Componentes de software" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="chart-container">
+            <h3>Señales EMG y su Procesamiento</h3>
+            <canvas id="emgChart"></canvas>
+        </div>
+    </section>
+    
+    <section id="regulacion">
+        <h2>Marco Regulatorio</h2>
+        <p>El desarrollo de este dispositivo médico se rige por las siguientes normativas:</p>
+        
+        <div class="reg-cards">
+            <div class="reg-card">
+                <h3>NOM-241-SSA1-2021</h3>
+                <p>Establece los requisitos de fabricación y controles de calidad por líneas de producción, homologando estándares internacionales como la ISO 13485.</p>
+            </div>
+            
+            <div class="reg-card">
+                <h3>ISO 14971</h3>
+                <p>Establece un proceso sistemático de gestión de riesgos mediante la identificación de peligros potenciales, análisis probabilístico y controles técnicos para mitigación.</p>
+            </div>
+            
+            <div class="reg-card">
+                <h3>ISO 10993-1</h3>
+                <p>Regula la evaluación biológica mediante una matriz de riesgo que considera duración del contacto con el dispositivo y el tipo de exposición.</p>
+            </div>
+        </div>
+    </section>
+    
+    <section id="equipo">
+        <h2>Equipo Estudiambres</h2>
+        <p>Somos un grupo multidisciplinario de estudiantes del Tecnológico de Monterrey comprometidos con el desarrollo de soluciones tecnológicas para problemas de salud.</p>
+        
+        <div class="team-grid">
+            <div class="team-member">
+                <img src="/api/placeholder/150/150" alt="Diego García" class="member-img" />
+                <h3>Diego García Morales</h3>
+                <p>A01770705</p>
+            </div>
+            <div class="team-member">
+                <img src="/api/placeholder/150/150" alt="Javier Tello" class="member-img" />
+                <h3>Javier Tello Vázquez</h3>
+                <p>A01770812</p>
+            </div>
+            <div class="team-member">
+                <img src="/api/placeholder/150/150" alt="José Carlos Ramos" class="member-img" />
+                <h3>José Carlos Ramos Martínez</h3>
+                <p>A01770524</p>
+            </div>
+            <div class="team-member">
+                <img src="/api/placeholder/150/150" alt="Regina Díaz" class="member-img" />
+                <h3>Regina Díaz Meléndez</h3>
+                <p>A01770860</p>
+            </div>
+            <div class="team-member">
+                <img src="/api/placeholder/150/150" alt="José Enrique Pérez" class="member-img" />
+                <h3>José Enrique Pérez Pérez</h3>
+                <p>A01770793</p>
+            </div>
+            <div class="team-member">
+                <img src="/api/placeholder/150/150" alt="Ileana Tapia" class="member-img" />
+                <h3>Ileana Tapia Castillo</h3>
+                <p>A01773374</p>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>BIO HACK RETO 2025</h3>
+                <p>Tecnológico de Monterrey</p>
+                <p>10 de marzo, 2025</p>
+            </div>
+            <div class="footer-section">
+                <h3>Contacto</h3>
+                <p>Equipo Estudiambres</p>
+                <p>contacto@estudiambres.edu.mx</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Equipo Estudiambres - Todos los derechos reservados</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
