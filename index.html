@@ -3,14 +3,376 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OrtoTech - Equipo Estudiambres</title>
-    <link rel="stylesheet" href="/css/styles.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <title>OrtoTech - Órtesis Robótica con EMG - Equipo Estudiambres</title>
+    <style>
+        /* Estilos generales */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+        
+        h1, h2, h3, h4 {
+            margin-bottom: 15px;
+            color: #0e4c92;
+        }
+        
+        p {
+            margin-bottom: 15px;
+        }
+        
+        a {
+            color: #0e4c92;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        a:hover {
+            color: #2a7dd1;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Header */
+        header {
+            background: linear-gradient(to right, #0e4c92, #2a7dd1);
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+        }
+        
+        .header-content {
+            padding: 30px;
+        }
+        
+        .header-content h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: white;
+        }
+        
+        .header-content p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            color: white;
+        }
+        
+        /* Navegación */
+        nav {
+            background-color: #ffffff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 0;
+            flex-wrap: wrap;
+        }
+        
+        nav ul li {
+            margin: 0;
+        }
+        
+        nav ul li a {
+            display: block;
+            padding: 15px 20px;
+            color: #333;
+            font-weight: 500;
+        }
+        
+        nav ul li a:hover {
+            background-color: #f0f0f0;
+        }
+        
+        /* Hero Section */
+        .hero {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 30px;
+            padding: 60px 0;
+            background-color: #ffffff;
+            margin-bottom: 30px;
+        }
+        
+        .hero-text {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .hero-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .hero-text p {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+        
+        .hero-image {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+        }
+        
+        .hero-image img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: #0e4c92;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 5px;
+            font-weight: 500;
+            margin-top: 10px;
+        }
+        
+        .btn:hover {
+            background-color: #2a7dd1;
+            color: white;
+        }
+        
+        /* Content Sections */
+        section {
+            padding: 60px 0;
+            background-color: #ffffff;
+            margin-bottom: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        section h2 {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+        
+        section h3 {
+            font-size: 1.5rem;
+            margin-top: 30px;
+        }
+        
+        /* Tabla de tecnologías */
+        .tech-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        .tech-table th,
+        .tech-table td {
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        
+        .tech-table th {
+            background-color: #f4f4f4;
+            font-weight: 600;
+        }
+        
+        .tech-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        /* Equipo */
+        .team-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+        }
+        
+        .team-member {
+            width: 300px;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .team-member img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 15px;
+        }
+        
+        .team-member h3 {
+            margin-bottom: 5px;
+        }
+        
+        .team-member p {
+            color: #666;
+        }
+        
+        /* Diagrama SVG */
+        .diagram-container {
+            max-width: 800px;
+            margin: 0 auto;
+            overflow-x: auto;
+        }
+        
+        /* Carrusel */
+        .carousel {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+        
+        .carousel-images {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        
+        .carousel-images img {
+            width: 100%;
+            flex-shrink: 0;
+        }
+        
+        .carousel-prev,
+        .carousel-next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(255, 255, 255, 0.7);
+            border: none;
+            font-size: 24px;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 50%;
+        }
+        
+        .carousel-prev {
+            left: 10px;
+        }
+        
+        .carousel-next {
+            right: 10px;
+        }
+        
+        /* Referencias */
+        .references {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        
+        .references h3 {
+            margin-bottom: 15px;
+        }
+        
+        .references ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        
+        .references li {
+            margin-bottom: 10px;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .references li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #0e4c92;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #0e4c92;
+            color: white;
+            padding: 50px 0 20px;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .footer-section h3 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content h1 {
+                font-size: 2rem;
+            }
+            
+            .hero-text h2 {
+                font-size: 2rem;
+            }
+            
+            nav ul {
+                flex-direction: column;
+            }
+            
+            nav ul li {
+                width: 100%;
+                text-align: center;
+            }
+            
+            .hero {
+                flex-direction: column;
+            }
+            
+            .tech-table {
+                display: block;
+                overflow-x: auto;
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
         <div class="header-content">
-            <h1>BIOHACK Estudiambres</h1>
+            <h1>BIO HACK RETO 2025 - BIOMÉDICA</h1>
             <p>Órtesis robótica para el apoyo en la flexión de codo en personas con limitaciones motoras integrando el uso de señales de electromiografía de superficie (EMG)</p>
         </div>
     </header>
@@ -20,65 +382,309 @@
             <li><a href="#inicio">Inicio</a></li>
             <li><a href="#proyecto">El Proyecto</a></li>
             <li><a href="#tecnologia">Tecnología</a></li>
-            <li><a href="#equipo">Equipo</a></li>
+            <li><a href="#teoricas">Bases Teóricas</a></li>
             <li><a href="#regulacion">Regulación</a></li>
-            <li><a href="#patentabilidad">Patentabilidad</a></li>
             <li><a href="#diseno">Diseño</a></li>
-            <li><a href="#prototipo">Prototipo</a></li>
-            <li><a href="#conclusiones">Conclusiones</a></li>
+            <li><a href="#patentabilidad">Patentabilidad</a></li>
+            <li><a href="#equipo">Equipo</a></li>
         </ul>
     </nav>
     
-    <section id="inicio">
-        <div class="hero">
-            <div class="hero-text">
-                <h2>Órtesis Robótica con EMG</h2>
-                <p>Solución innovadora para personas con artrogriposis múltiple congénita (AMC) y otras limitaciones motoras que afectan la flexión del codo.</p>
-                <p>Proyecto desarrollado por estudiantes del Tecnológico de Monterrey para el BioHack Reto 2025 en la categoría de Biomédica.</p>
-                <a href="#proyecto" class="btn">Conoce más</a>
+    <div class="container">
+        <section id="inicio">
+            <div class="hero">
+                <div class="hero-text">
+                    <h2>Órtesis Robótica con EMG</h2>
+                    <p>Solución innovadora para personas con artrogriposis múltiple congénita (AMC) y otras limitaciones motoras que afectan la flexión del codo.</p>
+                    <p>Proyecto desarrollado por el Equipo Estudiambres para el BioHack Reto 2025 en la categoría de Biomédica.</p>
+                    <a href="#proyecto" class="btn">Conoce más</a>
+                </div>
+                <div class="hero-image">
+                    <img src="/api/placeholder/400/320" alt="Órtesis Robótica" />
+                </div>
             </div>
-            <div class="hero-image">
-                <img src="https://via.placeholder.com/400x320" alt="Órtesis Robótica" />
+        </section>
+
+        <section id="proyecto">
+            <h2>El Proyecto</h2>
+            <p>Nuestro proyecto se basa en el desarrollo teórico de una órtesis diseñada para personas con artrogriposis múltiple congénita. También podría ser útil para personas con limitaciones en el movimiento del codo o el antebrazo, como aquellas en proceso de rehabilitación o con problemas neuromusculares.</p>
+            
+            <p>Su funcionamiento se apoya en sensores de electromiografía (EMG) colocados por encima del codo, los cuales detectan las contracciones y tensiones musculares del usuario para activar la asistencia cuando sea necesario. Los datos captados por los sensores EMG son amplificados y filtrados para eliminar ruidos externos que puedan afectar la precisión.</p>
+            
+            <div class="diagram-container">
+                <img src="/api/placeholder/800/400" alt="Diagrama de bloques de la órtesis" />
+                <p style="text-align: center; font-style: italic;">Figura 1.0: Diagrama de bloques de la órtesis</p>
             </div>
-        </div>
-    </section>
+            
+            <p>Mediante algoritmos digitales, se analiza la información para reconocer patrones de activación muscular. Un microcontrolador (ESP32) procesa estos datos y decide si se debe activar la asistencia en la flexión del codo.</p>
+            
+            <p>Para generar el movimiento asistido, consideramos el uso de motores eléctricos, como servomotores o motores de corriente directa, aunque también analizamos la opción de pistones para mejorar la eficiencia y el control.</p>
+        </section>
 
-    <!-- Other sections omitted for brevity -->
-
-    <section id="prototipo">
-        <h2>Prototipo</h2>
-        <p>El prototipo funcional será construido considerando materiales biocompatibles, pruebas de usabilidad y ajustes iterativos basados en retroalimentación. También se realizarán pruebas para evaluar su desempeño en condiciones reales.</p>
-        <p>Se contempla el uso de impresión 3D para desarrollar un modelo inicial y validar la estructura antes de implementar los sistemas electrónicos y de software.</p>
-
-        <!-- Carousel for prototype images -->
-        <div class="carousel">
-            <div class="carousel-images">
-                <img src="https://via.placeholder.com/800x400" alt="Prototipo 1">
-                <img src="https://via.placeholder.com/800x400" alt="Prototipo 2">
-                <img src="https://via.placeholder.com/800x400" alt="Prototipo 3">
+        <section id="tecnologia">
+            <h2>Tecnología</h2>
+            <h3>Componentes principales</h3>
+            <div class="table-container">
+                <table class="tech-table">
+                    <thead>
+                        <tr>
+                            <th>Componente</th>
+                            <th>Descripción</th>
+                            <th>Función</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Sensores EMG</td>
+                            <td>Electrodos de superficie</td>
+                            <td>Detección de señales mioeléctricas</td>
+                        </tr>
+                        <tr>
+                            <td>Amplificador AD620</td>
+                            <td>Amplificador operacional de bajo ruido</td>
+                            <td>Amplificación de señales EMG (50 µV a 5 mV)</td>
+                        </tr>
+                        <tr>
+                            <td>Microcontrolador ESP32</td>
+                            <td>Procesador de bajo consumo con WiFi/BT</td>
+                            <td>Procesamiento de señales y control de actuadores</td>
+                        </tr>
+                        <tr>
+                            <td>Actuadores</td>
+                            <td>Servomotores o motores DC</td>
+                            <td>Generación del movimiento asistido</td>
+                        </tr>
+                        <tr>
+                            <td>Estructura</td>
+                            <td>Piezas impresas en 3D</td>
+                            <td>Soporte ligero y resistente</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
-            <button class="carousel-prev">&lt;</button>
-            <button class="carousel-next">&gt;</button>
-        </div>
-    </section>
+            
+            <h3>Algoritmos de procesamiento</h3>
+            <p>Para el procesamiento de las señales EMG, se consideran las siguientes técnicas de aprendizaje automatizado:</p>
+            <ul>
+                <li><strong>Árboles de decisión:</strong> Clasifican movimientos mediante reglas binarias basadas en características de la señal (RMS, frecuencia media).</li>
+                <li><strong>SVM (Máquinas de Vectores Soporte):</strong> Identifican activaciones musculares mediante hiperplanos óptimos en espacios multidimensionales.</li>
+                <li><strong>Redes neuronales:</strong> Modelan relaciones no lineales en series temporales EMG, aplicadas en el reconocimiento de gestos complejos.</li>
+                <li><strong>Random Forest:</strong> Combinan múltiples árboles para reducir artefactos por movimiento, logrando mejor robustez mediante votación ponderada.</li>
+            </ul>
+        </section>
+
+        <section id="teoricas">
+            <h2>Bases Teóricas</h2>
+            <h3>Artrogriposis Múltiple Congénita (AMC)</h3>
+            <p>De acuerdo con el Instituto Weizmann de Ciencias, la AMC es un grupo de trastornos caracterizados por contracturas de las extremidades que afectan principalmente las manos y los pies. A esta condición se le asocia con una disminución del movimiento fetal en el útero, lo que ocasiona contracturas articulares que limitan el movimiento, además esta afección generalmente implica debilidad muscular y fibrosis.</p>
+            
+            <p>La artrogriposis múltiple congénita (AMC) se refiere al desarrollo de múltiples contracturas articulares que ocurren antes del nacimiento y que afectan la función articular y el rango de movimiento de las extremidades. Su principal causa es la acinesia fetal, que lleva al desarrollo de tejido conectivo alrededor de las articulaciones, hecho que restringe el movimiento y aumenta las contracturas articulares.</p>
+            
+            <h3>Electromiografía (EMG)</h3>
+            <p>La EMG es una técnica que mide la actividad eléctrica en los músculos. Cuando una neurona manda una señal a un músculo y el músculo la recibe, hay un cambio en el voltaje del músculo (usualmente entre -70 mV a -90 mV). Con la contracción muscular hay oscilaciones de voltaje (en el rango de 50 µV a 5 mV) que se detectan mediante electrodos, con frecuencias entre 10 Hz y 500 Hz dependiendo del tipo de músculo y actividad.</p>
+            
+            <p>Estas mediciones pueden ser afectadas por ruido de red eléctrica (50/60 Hz), contaminación entre señales, fatiga muscular y otros factores. La solución incluye el uso de sensores más específicos, algoritmos digitales para reconocer patrones y filtros digitales.</p>
+        </section>
+
+        <section id="regulacion">
+            <h2>Marco Regulatorio</h2>
+            <p>En México, una órtesis se considera un dispositivo médico, es decir, un aparato ortopédico diseñado para apoyar, corregir o proteger una parte del cuerpo. Las principales disposiciones que aplican son:</p>
+            
+            <ul>
+                <li><strong>NOM-137-SSA1-2008:</strong> Regula el etiquetado de dispositivos médicos, estableciendo que la información debe presentarse en español e incluir instrucciones claras sobre uso, mantenimiento y advertencias.</li>
+                
+                <li><strong>NOM-241-SSA1-2012:</strong> Establece que los dispositivos médicos deben cumplir criterios de calidad, seguridad y desempeño según su clasificación de riesgo.</li>
+                
+                <li><strong>NOM-241-SSA1-2021:</strong> Define los requisitos mínimos para el diseño, desarrollo, fabricación, almacenamiento y distribución de dispositivos médicos, asegurando que los materiales sean biocompatibles.</li>
+                
+                <li><strong>NOM-241-SSA1-2025:</strong> Establece la necesidad de una adecuada gestión de riesgos, identificando y mitigando posibles fallos en la estructura o funcionamiento del dispositivo.</li>
+            </ul>
+            
+            <h3>Estándares internacionales aplicables</h3>
+            <ul>
+                <li><strong>ISO 13485:</strong> Estándar para gestionar la calidad en la fabricación de dispositivos médicos.</li>
+                
+                <li><strong>ISO 14971:</strong> Establece un proceso sistemático de gestión de riesgos mediante identificación de peligros, análisis probabilístico y controles técnicos.</li>
+                
+                <li><strong>ISO 10993-1:</strong> Regula la evaluación biológica considerando la duración del contacto con el dispositivo y el tipo de exposición.</li>
+                
+                <li><strong>ISO 8549:</strong> Proporciona terminología uniforme para prótesis y órtesis externas, mejorando la comunicación entre profesionales de la salud.</li>
+            </ul>
+        </section>
+
+        <section id="diseno">
+            <h2>Diseño</h2>
+            <p>La órtesis está diseñada para ser ligera, resistente y cómoda para el usuario. Utilizamos el siguiente enfoque:</p>
+            
+            <h3>Características principales:</h3>
+            <ul>
+                <li>Estructura impresa en 3D para reducir peso y permitir personalización</li>
+                <li>Sistema de sensores EMG colocados estratégicamente para detectar intención de movimiento</li>
+                <li>Procesamiento de señales mediante amplificadores y filtros digitales</li>
+                <li>Actuadores eléctricos para asistir en la flexión del codo</li>
+                <li>Interfaz para modificar parámetros como velocidad y límite de movimiento</li>
+                <li>Alimentación por baterías para mayor portabilidad</li>
+            </ul>
+            
+            <div class="diagram-container">
+                <img src="/api/placeholder/800/400" alt="Diseño conceptual de la órtesis" />
+                <p style="text-align: center; font-style: italic;">Diseño conceptual de la órtesis</p>
+            </div>
+            
+            <p>El dispositivo cuenta con sensores que monitorean el desempeño de los actuadores y ajustan automáticamente la velocidad según las necesidades del usuario, permitiendo una mejor adaptación a diferentes situaciones.</p>
+        </section>
+
+        <section id="patentabilidad">
+            <h2>Análisis de Patentabilidad</h2>
+            <p>Después de realizar búsquedas de patentes, encontramos los siguientes ejemplos relacionados con nuestro proyecto:</p>
+            
+            <ul>
+                <li><strong>US7468047B2 - Órtesis y método de fabricación:</strong> Describe una órtesis prefabricada diseñada para abrazar y soportar una parte del cuerpo que incluye una articulación.</li>
+                
+                <li><strong>EP2685946A2 - Órtesis con almacenamiento de energía:</strong> Presenta una órtesis que incluye un ensamblaje de cinturón, un aparato de almacenamiento de energía y un marco de pierna articulado.</li>
+                
+                <li><strong>US20150127117A1 - Órtesis activa de tobillo-pie:</strong> Describe una órtesis activa donde la impedancia de una articulación ortésica se modula durante el ciclo de marcha.</li>
+            </ul>
+            
+            <p>Para que nuestra órtesis sea patentable, debe cumplir con los siguientes criterios:</p>
+            <ul>
+                <li>Novedad: Incorporar características únicas o combinaciones no existentes en el estado del arte.</li>
+                <li>Aplicación industrial: Demostrar utilidad práctica en el tratamiento de la AMC y otras limitaciones motoras.</li>
+                <li>Actividad inventiva: Representar un avance no obvio para un experto en la materia.</li>
+            </ul>
+            
+            <p>Nuestra órtesis podría ser patentable por su integración única de sensores EMG, algoritmos de procesamiento y sistema de actuación adaptativa para asistir específicamente en la flexión del codo en personas con AMC.</p>
+        </section>
+
+        <section id="equipo">
+            <h2>Equipo Estudiambres</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <img src="/api/placeholder/150/150" alt="Diego García Morales" />
+                    <h3>Diego García Morales</h3>
+                    <p>A01770705</p>
+                </div>
+                <div class="team-member">
+                    <img src="/api/placeholder/150/150" alt="Javier Tello Vázquez" />
+                    <h3>Javier Tello Vázquez</h3>
+                    <p>A01770812</p>
+                </div>
+                <div class="team-member">
+                    <img src="/api/placeholder/150/150" alt="José Carlos Ramos Martínez" />
+                    <h3>José Carlos Ramos Martínez</h3>
+                    <p>A01770524</p>
+                </div>
+                <div class="team-member">
+                    <img src="/api/placeholder/150/150" alt="Regina Díaz Meléndez" />
+                    <h3>Regina Díaz Meléndez</h3>
+                    <p>A01770860</p>
+                </div>
+                <div class="team-member">
+                    <img src="/api/placeholder/150/150" alt="José Enrique Pérez Pérez" />
+                    <h3>José Enrique Pérez Pérez</h3>
+                    <p>A01770793</p>
+                </div>
+                <div class="team-member">
+                    <img src="/api/placeholder/150/150" alt="Ileana Tapia Castillo" />
+                    <h3>Ileana Tapia Castillo</h3>
+                    <p>A01773374</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="referencias">
+            <h2>Referencias</h2>
+            <div class="references">
+                <ul>
+                    <li>Electromyography (EMG). (2023, 24 abril). Johns Hopkins Medicine.</li>
+                    <li>Actuadores eléctricos: aplicaciones y funciones. (2023, 10 abril).</li>
+                    <li>Improved operational amplifier for bio-medical applications. (2012).</li>
+                    <li>Kaur, R., Malhotra, R., & Deb, S. (2017). MAC based FIR Filter: A novel approach for Low-Power Real-Time De-noising of ECG signals.</li>
+                    <li>LifeMap Sciences & Weizmann Institute of Sciences (2025). Distal arthrogryposis - MalaCards.</li>
+                    <li>Secretaría de Economía. (2021). NOM-241-SSA1-2021: Buenas prácticas de fabricación de dispositivos médicos.</li>
+                    <li>Visure Solutions. (2024). ISO 14971 Gestión de riesgos para dispositivos médicos.</li>
+                    <li>OSF Plastic. (2023). Norma ISO 10993.</li>
+                    <li>Analog Devices. (2021). AD620 Instrumentation Amplifier Datasheet.</li>
+                    <li>Sanders, D. B., & Stålberg, E. V. (2012). Electrodiagnosis in neuromuscular disease.</li>
+                    <li>Ismail, R., et al. (2019). Soft Elbow Exoskeleton for Upper Limb Assistance Incorporating Dual Motor-Tendon Actuator.</li>
+                </ul>
+            </div>
+        </section>
+    </div>
 
     <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>BIO HACK RETO 2025</h3>
-                <p>Tecnológico de Monterrey</p>
-                <p>10 de marzo, 2025</p>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>BIO HACK RETO 2025</h3>
+                    <p>Tecnológico de Monterrey</p>
+                    <p>12 de abril, 2025</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Contacto</h3>
+                    <p>Equipo Estudiambres</p>
+                    <p>contacto@estudiambres.edu.mx</p>
+                </div>
             </div>
-            <div class="footer-section">
-                <h3>Contacto</h3>
-                <p>Equipo Estudiambres</p>
-                <p>contacto@estudiambres.edu.mx</p>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Equipo Estudiambres - Todos los derechos reservados</p>
             </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2025 Equipo Estudiambres - Todos los derechos reservados</p>
         </div>
     </footer>
-    <script src="script.js"></script>
+
+    <script>
+        // Navegación suave
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Navbar sticky
+        window.addEventListener('scroll', function() {
+            var nav = document.getElementById('main-nav');
+            if (window.scrollY > 100) {
+                nav.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1)';
+            } else {
+                nav.style.boxShadow = '0 2px 5px rgba(0, 0, 0, 0.1)';
+            }
+        });
+        
+        // Carrusel simple
+        const carousel = document.querySelector('.carousel');
+        if (carousel) {
+            const images = carousel.querySelector('.carousel-images');
+            const prevBtn = carousel.querySelector('.carousel-prev');
+            const nextBtn = carousel.querySelector('.carousel-next');
+            let currentIndex = 0;
+            
+            // Función para actualizar el carrusel
+            function updateCarousel() {
+                const slideWidth = carousel.clientWidth;
+                images.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+            }
+            
+            // Event listeners para los botones
+            if (prevBtn && nextBtn) {
+                prevBtn.addEventListener('click', () => {
+                    currentIndex = Math.max(0, currentIndex - 1);
+                    updateCarousel();
+                });
+                
+                nextBtn.addEventListener('click', () => {
+                    const totalSlides = images.children.length;
+                    currentIndex = Math.min(totalSlides - 1, currentIndex + 1);
+                    updateCarousel();
+                });
+            }
+            
+            // Ajustar el carrusel al cambiar el tamaño de la ventana
+            window.addEventListener('resize', updateCarousel);
+        }
+    </script>
 </body>
 </html>
