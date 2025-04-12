@@ -1,14 +1,15 @@
 /* Root Variables */
 :root {
-    --primary-color: #2D74FF;
-    --secondary-color: #1EE3CF;
+    --primary-color: #286DA8;
+    --secondary-color: #4FC3F7;
     --dark-color: #1A2B3C;
     --light-color: #F5F9FC;
-    --accent-color: #FF5757;
+    --accent-color: #FF6F61;
     --gray-color: #E0E0E0;
     --text-color: #333333;
     --shadow-color: rgba(0, 0, 0, 0.2);
     --transition-speed: 0.3s;
+    --font-main: 'Poppins', sans-serif;
 }
 
 /* General Styles */
@@ -16,7 +17,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: var(--font-main);
 }
 
 body {
@@ -36,14 +37,15 @@ header {
 }
 
 .header-content h1 {
-    font-size: 2.5rem;
+    font-size: 3rem;
     font-weight: 700;
     margin-bottom: 1rem;
     text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .header-content p {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     margin-top: 0.5rem;
 }
 
@@ -93,13 +95,13 @@ nav ul li a:hover {
 }
 
 .hero-text h2 {
-    font-size: 2.2rem;
+    font-size: 2.5rem;
     color: var(--primary-color);
     margin-bottom: 1rem;
 }
 
 .hero-text p {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     margin-bottom: 1.5rem;
 }
 
@@ -109,6 +111,7 @@ nav ul li a:hover {
     box-shadow: 0 5px 15px var(--shadow-color);
 }
 
+/* Buttons */
 .btn {
     display: inline-block;
     background: var(--primary-color);
@@ -123,6 +126,58 @@ nav ul li a:hover {
 .btn:hover {
     background: var(--secondary-color);
     transform: translateY(-3px);
+}
+
+/* Carousel Styles */
+.carousel {
+    position: relative;
+    max-width: 800px;
+    margin: 2rem auto;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px var(--shadow-color);
+}
+
+.carousel-images {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-images img {
+    width: 100%;
+    flex-shrink: 0;
+    transition: transform 0.3s ease-in-out;
+}
+
+.carousel-images img:hover {
+    transform: scale(1.05);
+}
+
+.carousel-prev, .carousel-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    z-index: 1;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 8px var(--shadow-color);
+}
+
+.carousel-prev:hover, .carousel-next:hover {
+    background-color: var(--secondary-color);
+    transform: scale(1.1);
+}
+
+.carousel-prev {
+    left: 10px;
+}
+
+.carousel-next {
+    right: 10px;
 }
 
 /* Section Styles */
@@ -142,79 +197,18 @@ section h2 {
 }
 
 section p {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     margin-bottom: 1rem;
     text-align: justify;
 }
 
-/* Table Styles */
-.table-container {
-    overflow-x: auto;
-    margin: 2rem 0;
-}
-
-.tech-table {
-    width: 100%;
-    border-collapse: collapse;
-    border: 1px solid var(--gray-color);
-    box-shadow: 0 4px 10px var(--shadow-color);
-}
-
-.tech-table th, .tech-table td {
-    padding: 12px 15px;
-    text-align: left;
-    border: 1px solid var(--gray-color);
-}
-
-.tech-table th {
-    background-color: var(--primary-color);
-    color: white;
-    font-weight: bold;
-}
-
-.tech-table tr:nth-child(even) {
-    background-color: var(--light-color);
-}
-
-/* Diagram Container */
-.diagram-container img {
-    max-width: 100%;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px var(--shadow-color);
-    margin: 2rem 0;
-}
-
-.diagram-container p {
-    font-style: italic;
-    text-align: center;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .hero {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .hero-text {
-        margin-bottom: 2rem;
-    }
-
-    nav ul {
-        flex-wrap: wrap;
-    }
-
-    .tech-table th, .tech-table td {
-        font-size: 0.9rem;
-    }
-}
 /* Footer Styles */
 footer {
-    background-color: var(--gray-color);
-    color: var(--text-color);
-    padding: 2rem 2rem 1rem;
+    background-color: var(--dark-color);
+    color: white;
+    padding: 2rem;
     font-size: 0.95rem;
-    border-top: 2px solid var(--dark-color);
+    border-top: 2px solid var(--primary-color);
 }
 
 .footer-container {
@@ -232,9 +226,9 @@ footer {
 
 .footer-section h3 {
     font-size: 1.2rem;
-    color: var(--dark-color);
+    color: var(--secondary-color);
     margin-bottom: 0.8rem;
-    border-bottom: 3px solid var(--secondary-color);
+    border-bottom: 3px solid var(--primary-color);
     display: inline-block;
     padding-bottom: 0.3rem;
 }
@@ -245,19 +239,18 @@ footer {
 }
 
 .footer-section a {
-    color: var(--primary-color);
+    color: var(--secondary-color);
     text-decoration: none;
     transition: color var(--transition-speed);
 }
 
 .footer-section a:hover {
-    color: var(--secondary-color);
+    color: var(--accent-color);
 }
 
 .footer-bottom {
     text-align: center;
-    border-top: 1px solid var(--light-color);
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
     padding: 1rem 0 0;
     font-size: 0.9rem;
-    color: var(--text-color);
 }
